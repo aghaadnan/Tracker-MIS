@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>SIM Details</h2>
+  <ul>
+    <li>MSISDN: {{ object.MSISDN }}</li>
+    <li>ICC-ID: {{ object.ICC_ID }}</li>
+    <li>Operator: {{ object.OPERATOR }}</li>
+    <li>Package: {{ object.PACKAGE }}</li>
+  </ul>
+  <a href="{% url 'inventory:sim-update' pk=object.pk %}">Update SIM</a>
+  <a href="{% url 'inventory:sim-delete' pk=object.pk %}">Delete SIM</a>
+{% endblock %}

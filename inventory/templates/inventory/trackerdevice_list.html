@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Tracker Devices</h1>
+  <p><a href="{% url 'inventory:trackerdevice-create' %}">Create New Tracker Device</a></p>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>Model Number</th>
+        <th>Vendor</th>
+        <th>Price</th>
+        <th>IMEI</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for trackerdevice in object_list %}
+        <tr>
+          <td>{{ trackerdevice.model_number }}</td>
+          <td>{{ trackerdevice.vendor }}</td>
+          <td>{{ trackerdevice.price }}</td>
+          <td>{{ trackerdevice.imei }}</td>
+          <td>
+            <a href="{% url 'inventory:trackerdevice-detail' trackerdevice.pk %}">View</a> |
+            <a href="{% url 'inventory:trackerdevice-update' trackerdevice.pk %}">Edit</a> |
+            <a href="{% url 'inventory:trackerdevice-delete' trackerdevice.pk %}">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No tracker devices found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

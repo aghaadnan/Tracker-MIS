@@ -1,0 +1,39 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Sims</h1>
+  <p><a href="{% url 'inventory:sim-create' %}">Create New Sim record</a></p>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>MSISDN</th>
+        <th>ICC_ID</th>
+        <th>PACKAGE</th>
+        <th>OPERATOR</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sim in object_list %}
+        <tr>
+          <td>{{ sim.MSISDN }}</td>
+          <td>{{ sim.ICC_ID }}</td>
+          <td>{{ sim.PACKAGE }}</td>
+          <td>{{ sim.OPERATOR }}</td>
+          <td>
+            <a href="{% url 'inventory:sim-detail' sim.pk %}">View</a> |
+            <a href="{% url 'inventory:sim-update' sim.pk %}">Edit</a> |
+            <a href="{% url 'inventory:sim-delete' sim.pk %}">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No sim record found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

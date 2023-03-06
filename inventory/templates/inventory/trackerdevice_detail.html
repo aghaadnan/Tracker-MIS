@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Tracker Device Details</h1>
+  <table>
+    <tr>
+      <th>Model Number</th>
+      <td>{{ object.model_number }}</td>
+    </tr>
+    <tr>
+      <th>Vendor</th>
+      <td>{{ object.vendor }}</td>
+    </tr>
+    <tr>
+      <th>Price</th>
+      <td>{{ object.price }}</td>
+    </tr>
+    <tr>
+      <th>IMEI</th>
+      <td>{{ object.imei }}</td>
+    </tr>
+  </table>
+  <p><a href="{% url 'inventory:trackerdevice-update' object.pk %}">Edit Tracker Device</a></p>
+{% endblock %}
