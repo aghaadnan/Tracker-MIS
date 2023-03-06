@@ -9,7 +9,7 @@ from agent.mixins import OrganisorandLoginRequiredMixin
 from .forms import LeadForm, LeadModelForm, CustomUserCreationForm
 # Create your views here.
 class SignupView(CreateView):
-    template_name = "registration\signup.html"
+    template_name = "registration/signup.html"
     form_class = CustomUserCreationForm
     def get_success_url(self):
         return reverse('login')
@@ -18,7 +18,7 @@ class LandingPageView(TemplateView):
     template_name = "landing_page.html"
 
 class LeadListView(LoginRequiredMixin, ListView):
-    template_name = "leads\home_page.html"
+    template_name = "leads/home_page.html"
     context_object_name = 'leads'
 
     def get_queryset(self):
@@ -33,7 +33,7 @@ class LeadListView(LoginRequiredMixin, ListView):
         return queryset
 
 class LeadDetailView(LoginRequiredMixin, DetailView):
-    template_name = "leads\lead_detail.html"
+    template_name = "leads/lead_detail.html"
     
     context_object_name = 'lead'
     def get_queryset(self):
@@ -46,12 +46,12 @@ class LeadDetailView(LoginRequiredMixin, DetailView):
             return queryset
 
 class LeadCreatView(OrganisorandLoginRequiredMixin, CreateView):
-    template_name = "leads\lead_create.html"
+    template_name = "leads/lead_create.html"
     form_class = LeadModelForm
     def get_success_url(self):
         return reverse('leads:lead-list')
 class LeadUpdateView(OrganisorandLoginRequiredMixin, UpdateView):
-    template_name = "leads\lead_create.html"
+    template_name = "leads/lead_create.html"
     queryset = Lead.objects.all()
     form_class = LeadModelForm
     '''
@@ -63,7 +63,7 @@ class LeadUpdateView(OrganisorandLoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse('leads:lead-list')
 class LeadDeleteView(OrganisorandLoginRequiredMixin, DeleteView):
-    template_name = "leads\lead_delete.html"
+    template_name = "leads/lead_delete.html"
     def get_queryset(self):
         user = self.request.user
         return Lead.objects.filter(organisation=user.userprofile)

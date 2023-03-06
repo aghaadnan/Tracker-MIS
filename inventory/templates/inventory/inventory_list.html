@@ -2,9 +2,11 @@
 
 {% block content %}
 
-<div>
-<p><a href="{% url 'inventory:trackerdevice-list' %}">Tracker Devices</a></p>
-<p><a href="{% url 'inventory:sim-list' %}">Sims</a></p>
+<div class="container container-lg">
+<ul class="list-group list-group-flush">
+  <li class="list-group-item"><a href="{% url 'inventory:trackerdevice-list' %}">Tracker Devices</a></li>
+  <li class="list-group-item"><a href="{% url 'inventory:sim-list' %}">Sims</a></li>
+</ul>
 </div>
 
 {% endblock %}

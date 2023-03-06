@@ -10,7 +10,7 @@ from .mixins import OrganisorandLoginRequiredMixin
 from .forms import AgentFormModel
 
 class AgentListView(OrganisorandLoginRequiredMixin, ListView):
-    template_name = "agent\gent_list.html"
+    template_name = "agent/gent_list.html"
     
     def get_queryset(self):
         organisation =self.request.user.userprofile
