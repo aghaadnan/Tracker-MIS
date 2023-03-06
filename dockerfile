@@ -16,10 +16,10 @@ EXPOSE 8000
 # Define environment variables
 ENV DJANGO_SETTINGS_MODULE=trackermis.settings
 ENV PYTHONUNBUFFERED=1
-RUN chmod +x entrypoint.sh
+#RUN chmod +x entrypoint.sh
 
 # Set up the entrypoint for the container
-ENTRYPOINT ["./entrypoint.sh"]
+#ENTRYPOINT ["./entrypoint.sh"]
 
 # Use CMD to specify the default command to run when a container is started
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
