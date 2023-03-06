@@ -16,6 +16,7 @@ EXPOSE 8000
 # Define environment variables
 ENV DJANGO_SETTINGS_MODULE=trackermis.settings
 ENV PYTHONUNBUFFERED=1
+RUN chmod +x entrypoint.sh
 
 # Set up the entrypoint for the container
 ENTRYPOINT ["./entrypoint.sh"]
